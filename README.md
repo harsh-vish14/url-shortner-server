@@ -4,7 +4,7 @@ THIS IS CODE SNIPPET TO START THE SERVER
 
 ## Installation
 
-1. Start using some simple steps.
+1. clone the git repo.
 
 ```bash
 git clone https://github.com/harsh-vish14/express-server.git
