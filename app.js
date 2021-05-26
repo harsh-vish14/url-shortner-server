@@ -13,7 +13,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const urlSchema = {
@@ -27,12 +27,12 @@ app.post("/register-url", (req, res) => {
   // const id = shortid.generate();
   const { url } = req.body;
   if (!url || !validUrl.isUri(url)) {
-    res.redirect("/notFound");
+    return res.status(404).json({ err: "Invalid Response" });
   }
 
   urlmongo.findOne({ url }, (err, data) => {
     if (data) {
-      res.status(200).json({
+      return res.status(200).json({
         url: `http://localhost:8000/${data._id}`,
       });
     } else {
@@ -43,13 +43,12 @@ app.post("/register-url", (req, res) => {
           url: url,
         });
       } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
           err: "Inserting data failed",
         });
       }
-      console.log(id);
-      res.status(200).json({
-        message: `http://localhost:8000/${id}`,
+      return res.status(200).json({
+        url: `http://localhost:8000/${id}`,
       });
     }
   });
@@ -58,11 +57,9 @@ app.post("/register-url", (req, res) => {
 app.get("/:id", (req, res) => {
   urlmongo.findById(req.params.id, (err, data) => {
     if (data) {
-      res.redirect(data.url);
+      return res.redirect(data.url);
     } else {
-      res.json({
-        message: "invalid url",
-      });
+      return res.redirect("http://localhost:3000/");
     }
   });
 });
