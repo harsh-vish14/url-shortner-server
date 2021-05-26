@@ -64,12 +64,6 @@ app.get("/:id", (req, res) => {
   });
 });
 
-app.get("*", (req, res) => {
-  res.status(404).json({
-    err: "invalid url",
-  });
-});
-
 app.listen(PORT, () => {
   console.log("server is running at: " + PORT);
 });
