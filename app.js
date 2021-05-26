@@ -37,10 +37,14 @@ app.post("/register-url", (req, res) => {
       });
     } else {
       const id = shortid.generate();
-      if (id) {
+      try {
         urlmongo.insertMany({
           _id: id,
           url: url,
+        });
+      } catch (err) {
+        res.status(500).json({
+          err: "Inserting data failed",
         });
       }
       console.log(id);
@@ -53,7 +57,13 @@ app.post("/register-url", (req, res) => {
 
 app.get("/:id", (req, res) => {
   urlmongo.findById(req.params.id, (err, data) => {
-    res.redirect(data.url);
+    if (data) {
+      res.redirect(data.url);
+    } else {
+      res.json({
+        message: "invalid url",
+      });
+    }
   });
 });
 
