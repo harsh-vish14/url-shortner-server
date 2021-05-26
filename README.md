@@ -1,27 +1,34 @@
-# EXPRESS-SERVER-SNIPPET
+# URL [shorter api]()
 
-THIS IS CODE SNIPPET TO START THE SERVER
+This is url shorter using mongodb database
 
-## Installation
+### Get Started with server `first clone this repo`
 
-1. clone the git repo.
-
-```bash
-git clone https://github.com/harsh-vish14/express-server.git
+```git
+git clone
 ```
 
-2. install required packages it automatically installs that by running the below command
+`install required dependence's `
 
-```bash
+```npm
 npm install
 ```
 
-3. Give the server a try by running the command
+`run`
 
-```bash
-#using nodemon
-   npm start
-
-# not using nodemon
-   node app.js
+```npm
+npm run dev
 ```
+
+on run dev it will using nodemon app.js
+if you `don't have nodemon` then change
+
+```json
+"dev": "nodemon app.js"
+
+   //to
+
+"dev": "node app.js"
+```
+
+Check the live server
