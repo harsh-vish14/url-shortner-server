@@ -33,7 +33,7 @@ app.post("/register-url", (req, res) => {
   urlmongo.findOne({ url }, (err, data) => {
     if (data) {
       return res.status(200).json({
-        url: `http://localhost:8000/${data._id}`,
+        url: `https://shortsurl.herokuapp.com/${data._id}`,
       });
     } else {
       const id = shortid.generate();
@@ -48,7 +48,7 @@ app.post("/register-url", (req, res) => {
         });
       }
       return res.status(200).json({
-        url: `http://localhost:8000/${id}`,
+        url: `https://shortsurl.herokuapp.com/${id}`,
       });
     }
   });
@@ -59,7 +59,7 @@ app.get("/:id", (req, res) => {
     if (data) {
       return res.redirect(data.url);
     } else {
-      return res.redirect("http://localhost:3000/");
+      return res.redirect("https://short-f276e.web.app/");
     }
   });
 });
