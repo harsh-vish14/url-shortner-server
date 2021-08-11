@@ -1,4 +1,4 @@
-# [URL shorter api](https://short-f276e.web.app/)
+# [URL shorter](https://short-f276e.web.app/)
 
 This is url shorter using mongodb database
 
