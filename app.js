@@ -65,5 +65,5 @@ app.get("/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("server is running at: " + PORT);
+  console.log("server is running at port number: " + PORT);
 });
